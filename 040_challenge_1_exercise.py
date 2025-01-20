@@ -29,36 +29,47 @@ from lib.helpers import check_that_these_are_equal
 print("")
 print("Function: report_long_words")
 
+
 def report_long_words(words):
-  pass
+    report = []
+
+    for word in words:
+        if len(word) > 10 and "-" not in word:
+            if len(word) > 15:
+                report.append(word[:15] + "...")
+            else:
+                report.append(word)
+
+    return "These words are quite long: " + ", ".join(report)
+
 
 check_that_these_are_equal(
-  report_long_words([
-    'hello',
-    'nonbiological',
-    'Kay',
-    'this-is-a-long-word',
-    'antidisestablishmentarianism'
-  ]),
-  "These words are quite long: nonbiological, antidisestablis..."
+    report_long_words([
+        'hello',
+        'nonbiological',
+        'Kay',
+        'this-is-a-long-word',
+        'antidisestablishmentarianism'
+    ]),
+    "These words are quite long: nonbiological, antidisestablis..."
 )
 
 check_that_these_are_equal(
-  report_long_words([
-    'cat',
-    'dog',
-    'rhinosaurus',
-    'rhinosaurus-rex',
-    'frog'
-  ]),
-  "These words are quite long: rhinosaurus"
+    report_long_words([
+        'cat',
+        'dog',
+        'rhinosaurus',
+        'rhinosaurus-rex',
+        'frog'
+    ]),
+    "These words are quite long: rhinosaurus"
 )
 
 check_that_these_are_equal(
-  report_long_words([
-    'cat'
-  ]),
-  "These words are quite long: "
+    report_long_words([
+        'cat'
+    ]),
+    "These words are quite long: "
 )
 
 # Once you're done, move on to 041_challenge_2_example.py
